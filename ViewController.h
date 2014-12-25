@@ -14,9 +14,9 @@
 
 @interface ViewController : UIViewController
 
-@property UIView *contentView;
-@property UIImageView *imageView;
-@property UIButton *changeButton;
+@property (strong, nonatomic) UIView *contentView;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UIButton *changeButton;
 @property (assign) BOOL isActive;
 
 - (void)changeImage:(id)sender;

@@ -17,11 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //contentView
     CGFloat contentViewY = [self getContentViewYCoordinate];
     self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, contentViewY, self.view.bounds.size.width, self.view.bounds.size.height - contentViewY)];
     [self.view addSubview:self.contentView];
     self.contentView.backgroundColor = [UIColor whiteColor];
     
+    //changeButton
     self.changeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, [self getChangeButtonYCoordinate], self.view.bounds.size.width, CHANGE_BUTTON_HEIGHT)];
     [self.contentView addSubview:self.changeButton];
     self.changeButton.backgroundColor = [UIColor greenColor];
@@ -29,9 +31,10 @@
     [self.changeButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
     [self.changeButton addTarget:self action:@selector(changeImage:) forControlEvents:UIControlEventTouchDown];
     
+    //imageView
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(IMAGE_VIEW_MARGIN, (self.contentView.bounds.size.height - CHANGE_BUTTON_HEIGHT - IMAGE_VIEW_HEIGHT) / 2, self.contentView.bounds.size.width - IMAGE_VIEW_MARGIN * 2, IMAGE_VIEW_HEIGHT)];
     [self.contentView addSubview:self.imageView];
-    self.imageView.backgroundColor = [UIColor redColor];
+    self.imageView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,12 +61,13 @@
 }
 
 - (void)changeImage:(id)sender {
-    self.isActive = !self.isActive;
     if (self.isActive) {
-        self.contentView.backgroundColor = [UIColor grayColor];
+        self.imageView.image = [UIImage imageNamed:@"1.png"];
     } else {
-        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.imageView.image = [UIImage imageNamed:@"2.png"];
     }
+    
+    self.isActive = !self.isActive;
 }
 
 @end
