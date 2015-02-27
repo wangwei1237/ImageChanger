@@ -35,6 +35,7 @@
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(IMAGE_VIEW_MARGIN, (self.contentView.bounds.size.height - CHANGE_BUTTON_HEIGHT - IMAGE_VIEW_HEIGHT) / 2, self.contentView.bounds.size.width - IMAGE_VIEW_MARGIN * 2, IMAGE_VIEW_HEIGHT)];
     [self.contentView addSubview:self.imageView];
     self.imageView.backgroundColor = [UIColor clearColor];
+    [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,9 +63,28 @@
 
 - (void)changeImage:(id)sender {
     if (self.isActive) {
-        self.imageView.image = [UIImage imageNamed:@"1.png"];
+        self.imageView.image = [UIImage imageNamed:@"1"];
     } else {
-        self.imageView.image = [UIImage imageNamed:@"2.png"];
+        self.imageView.image = [UIImage imageNamed:@"2"];
+//        NSArray *searchPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        
+//        NSString *documentFolderPath;
+//        if ([searchPath count] > 0) {
+//            documentFolderPath = [searchPath objectAtIndex:0];
+//        } else {
+//            documentFolderPath = @"";
+//        }
+//        NSUInteger strlen = [documentFolderPath length];
+//        if ([documentFolderPath characterAtIndex:strlen - 1] != '/') {
+//            documentFolderPath = [documentFolderPath stringByAppendingString:@"/"];
+//        }
+//        
+//        NSString *localFilePath = [documentFolderPath stringByAppendingString:@"download.png"];
+//        //NSLog(@"++++++%@", localFilePath);
+//        self.imageView.image = [UIImage imageWithContentsOfFile:localFilePath];
+//        if (self.imageView.image == nil) {
+//            NSLog(@"then download.png file does not exist!");
+//        }
     }
     
     self.isActive = !self.isActive;
